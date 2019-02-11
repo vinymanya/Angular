@@ -1,0 +1,213 @@
+<div class="container">
+  <h1>{{ title }}!</h1>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f.value, f.valid)" novalidate>
+    <div class="submitted-form" [hidden]="f.submitted">
+      <div class="form-group">
+        <label for="firstname" class="label-control">First Name:</label>
+        <input
+          type="text"
+          name="firstname"
+          class="form-control"
+          placeholder="Your First Name"
+          required
+          minlength="3"
+          maxlength="25"
+          [(ngModel)]="user.firstname"
+          #firstName="ngModel"
+        />
+        <div
+          *ngIf="firstName.errors?.required && firstName.dirty"
+          class="alert alert-danger"
+        >
+          First Name is required!
+        </div>
+        <div
+          *ngIf="firstName.errors?.minlength && firstName.dirty"
+          class="alert alert-danger"
+        >
+          Frist Name must be at least 3 characters!
+        </div>
+        <div
+          *ngIf="firstName.errors?.maxlength && firstName.dirty"
+          class="alert alert-danger"
+        >
+          First Name's maximum length is 25 characters!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastname" class="label-control">Last Name:</label>
+        <input
+          type="text"
+          name="lastname"
+          class="form-control"
+          placeholder="Your Last Name"
+          required
+          minlength="3"
+          maxlength="25"
+          [(ngModel)]="user.lastname"
+          #lastName="ngModel"
+        />
+        <div
+          *ngIf="lastName.errors?.required && lastName.dirty"
+          class="alert alert-danger"
+        >
+          Last Name is required!
+        </div>
+        <div
+          *ngIf="lastName.errors?.minlength && lastName.dirty"
+          class="alert alert-danger"
+        >
+          Last Name must be at least 3 characters!
+        </div>
+        <div
+          *ngIf="lastName.errors?.maxlength && lasttName.dirty"
+          class="alert alert-danger"
+        >
+          Last Name's maximum length is 25 characters!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="label-control">Email: </label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          placeholder="yourname@example.com"
+          required
+          [(ngModel)]="user.email"
+          #email="ngModel"
+        />
+        <div
+          *ngIf="email.errors?.required && email.dirty"
+          class="alert alert-danger"
+        >
+          Email is required!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="label-control">Password: </label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          placeholder="Your Password"
+          [(ngModel)]="user.password"
+          minlength="8"
+          required
+          #password="ngModel"
+        />
+        <div
+          *ngIf="password.errors?.required && password.dirty"
+          class="alert alert-danger"
+        >
+          Password is required!
+        </div>
+        <div
+          *ngIf="password.errors?.minlength && password.dirty"
+          class="alert alert-danger"
+        >
+          Password must be at least 8 characters!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm-password" class="label-control"
+          >Confirm Password:
+        </label>
+        <input
+          type="password"
+          name="confirm-password"
+          class="form-control"
+          placeholder="Confirm your password"
+          [(ngModel)]="user.confirmPassword"
+          required
+          #confirmPassword="ngModel"
+        />
+        <div
+          *ngIf="confirmPassword.errors?.required && confirmPassword.dirty"
+          class="alert alert-danger"
+        >
+          Password is required!
+        </div>
+        <div
+          *ngIf="
+            confirmPassword.length !== password.length && confirmPassword.dirty
+          "
+          class="alert alert-danger"
+        >
+          Passwords don't match!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="street address" class="label-control"
+          >Street Address:</label
+        >
+        <input
+          type="text"
+          name="street"
+          class="form-control"
+          placeholder="Your Address"
+          [(ngModel)]="user.street"
+          required
+          #street="ngModel"
+        />
+        <div
+          *ngIf="street.errors?.required && street.dirty"
+          class="alert alert-danger"
+        >
+          Address is required!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="unit" class="label-control">Unit/Apt</label>
+        <input type="text" name="unit" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="city" class="label-control">City: </label>
+        <input type="text" name="city" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="state" class="label-control">State: </label>
+        <select name="state" id="state">
+          <option value="WA">WA</option>
+          <option value="LS">ls</option>
+          <option value="JS">js</option>
+        </select>
+      </div>
+      <div class="form-group">
+        I am feeling lucky:
+        <input
+          type="radio"
+          name="feeling"
+          value="Yes"
+          class="form-control"
+        />Yes
+        <input type="radio" name="feeling" value="No" class="form-control" />NO
+      </div>
+      <input
+        [disabled]="f.invalid"
+        type="submit"
+        value="Submit"
+        class="btn btn-success"
+      />
+    </div>
+
+    <!-- success message upon form submission -->
+    <div *ngIf="f.submitted">
+      <div class="alert alert-success">
+        Thank for registering with us {{ f.value.firstname }}, we just sent you
+        a confirmation email at {{ f.value.email }} and we will send all mail to
+        {{ f.value.street }} somewhere {{ f.value.city }}
+      </div>
+      <button class="btn btn-default" (click)="f.resetForm({})">
+        Add a new User!
+      </button>
+    </div>
+  </form>
+</div>

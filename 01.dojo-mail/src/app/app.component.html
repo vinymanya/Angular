@@ -1,0 +1,20 @@
+<h1>Welcome to {{ title }}</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td><b>Email</b></td>
+      <td><b>Importance</b></td>
+      <td><b>Subject</b></td>
+      <td><b>Content</b></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let email of emails">
+      <td>{{ email.email }}</td>
+      <td>{{ email.important ? "High" : "Low" }}</td>
+      <td>{{ email.subject }}</td>
+      <td>{{ email.content }}</td>
+    </tr>
+  </tbody>
+</table>

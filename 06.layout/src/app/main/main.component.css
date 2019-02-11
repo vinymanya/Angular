@@ -1,0 +1,9 @@
+div.main{
+  width: 650px;
+  margin:30px;
+  padding: 10px;
+  background-color: royalblue;
+  display: inline-block;
+  vertical-align: top;
+}
+

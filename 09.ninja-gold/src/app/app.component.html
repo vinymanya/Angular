@@ -1,0 +1,18 @@
+<h3>{{ title }}: {{ total }}</h3>
+
+<app-ninja
+  (farm)="handleFarm($event)"
+  (cave)="handleCave($event)"
+  (casino)="handleCasino($event)"
+  (house)="handleHouse($event)"
+>
+</app-ninja>
+<br />
+<fieldset>
+  <app-gold
+    [farm]="messages1"
+    [cave]="messages2"
+    [casino]="messages3"
+    [house]="messages4"
+  ></app-gold>
+</fieldset>

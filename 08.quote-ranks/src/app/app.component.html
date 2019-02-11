@@ -1,0 +1,12 @@
+<h1>Quote Ranks</h1>
+<div class="container">
+  <app-quote-create
+    [quotes]="quotes"
+    (createQuote)="handleQuoteCreation($event)"
+  ></app-quote-create>
+
+  <app-quote-list
+    [quotes]="quotes"
+    (deleteQuoteEvent)="deleteQuote($event)"
+  ></app-quote-list>
+</div>
